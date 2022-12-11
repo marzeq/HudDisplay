@@ -3,6 +3,10 @@ package me.marzeq.huddisplay.config;
 import com.moandjiezana.toml.Toml;
 import com.moandjiezana.toml.TomlWriter;
 import me.marzeq.huddisplay.HudDisplay;
+import me.marzeq.huddisplay.config.enums.Alignment;
+import me.marzeq.huddisplay.config.enums.Line;
+import me.marzeq.huddisplay.config.enums.Position;
+import me.marzeq.huddisplay.config.enums.SystemTime;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
@@ -34,8 +38,8 @@ public class Config {
 
 
     // Position
-    public Position defaultPosition = Position.TOP_LEFT;
     public Position position = Defaults.defaultPosition;
+    public Alignment alignment = Defaults.defaultAlignment;
 
 
     private transient File file;
@@ -95,27 +99,5 @@ public class Config {
         order = Defaults.defaultOrder;
         position = Defaults.defaultPosition;
         save();
-    }
-
-    public enum Line {
-        FPS,
-        XYZ,
-        PING,
-        PLAYER_NAME,
-        LIGHT_LEVEL,
-        SYSTEM_TIME,
-        BIOME
-    }
-
-    public enum Position {
-        TOP_LEFT,
-        TOP_RIGHT,
-        BOTTOM_LEFT,
-        BOTTOM_RIGHT
-    }
-
-    public enum SystemTime {
-        TWENTY_FOUR,
-        TWELVE
     }
 }

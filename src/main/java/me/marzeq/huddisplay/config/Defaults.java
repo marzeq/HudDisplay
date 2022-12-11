@@ -1,5 +1,10 @@
 package me.marzeq.huddisplay.config;
 
+import me.marzeq.huddisplay.config.enums.Alignment;
+import me.marzeq.huddisplay.config.enums.Line;
+import me.marzeq.huddisplay.config.enums.Position;
+import me.marzeq.huddisplay.config.enums.SystemTime;
+
 public class Defaults {
     public static boolean defaultFps = false;
     // Lines
@@ -9,7 +14,7 @@ public class Defaults {
     public static boolean defaultBiome = false;
     public static boolean defaultLightLevel = false;
     public static boolean defaultSystemTime = false;
-    public static Config.SystemTime defaultSystemTimeFormat = Config.SystemTime.TWENTY_FOUR;
+    public static SystemTime defaultSystemTimeFormat = SystemTime.TWENTY_FOUR;
 
     // Colors
     public static int defaultFpsColor = 0xffffff;
@@ -21,8 +26,9 @@ public class Defaults {
     public static int defaultSystemTimeColor = 0xffffff;
 
     // Order
-    public static Config.Line[] defaultOrder = new Config.Line[]{Config.Line.FPS, Config.Line.XYZ, Config.Line.BIOME, Config.Line.PING, Config.Line.PLAYER_NAME, Config.Line.LIGHT_LEVEL, Config.Line.SYSTEM_TIME};
+    public static Line[] defaultOrder = new Line[]{Line.FPS, Line.XYZ, Line.BIOME, Line.PING, Line.PLAYER_NAME, Line.LIGHT_LEVEL, Line.SYSTEM_TIME};
 
     // Position
-    public static Config.Position defaultPosition = Config.Position.TOP_LEFT;
+    public static Position defaultPosition = Position.TOP_LEFT;
+    public static Alignment defaultAlignment = Alignment.LEFT;
 }

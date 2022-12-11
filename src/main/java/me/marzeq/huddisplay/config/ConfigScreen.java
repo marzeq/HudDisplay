@@ -3,6 +3,10 @@ package me.marzeq.huddisplay.config;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.marzeq.huddisplay.HudDisplay;
+import me.marzeq.huddisplay.config.enums.Alignment;
+import me.marzeq.huddisplay.config.enums.Line;
+import me.marzeq.huddisplay.config.enums.Position;
+import me.marzeq.huddisplay.config.enums.SystemTime;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
@@ -59,7 +63,7 @@ public class ConfigScreen implements ModMenuApi {
                         .setSaveConsumer(v -> config.systemTime = v).build()
                 )
                 .addEntry(entry
-                        .startEnumSelector(Text.of("Time Format"), Config.SystemTime.class, config.systemTimeFormat)
+                        .startEnumSelector(Text.of("Time Format"), SystemTime.class, config.systemTimeFormat)
                         .setDefaultValue(Defaults.defaultSystemTimeFormat)
                         .setSaveConsumer(v -> config.systemTimeFormat = v).build()
                 );
@@ -114,7 +118,7 @@ public class ConfigScreen implements ModMenuApi {
         for (int i = 0; i < config.order.length; i++) {
             int finalI = i;
             category.addEntry(entry
-                    .startEnumSelector(Text.of("Line " + (i + 1)), Config.Line.class, config.order[i])
+                    .startEnumSelector(Text.of("Line " + (i + 1)), Line.class, config.order[i])
                     .setDefaultValue(Defaults.defaultOrder[i])
                     .setSaveConsumer(v -> {
                         // check if under an index different from the current one there is the same value
@@ -129,11 +133,16 @@ public class ConfigScreen implements ModMenuApi {
         }
 
 
-        builder.getOrCreateCategory(Text.of("Position"))
+        builder.getOrCreateCategory(Text.of("Position & Alignment"))
                 .addEntry(entry
-                        .startEnumSelector(Text.of("Position"), Config.Position.class, config.position)
-                        .setDefaultValue(config.defaultPosition)
+                        .startEnumSelector(Text.of("Position"), Position.class, config.position)
+                        .setDefaultValue(Defaults.defaultPosition)
                         .setSaveConsumer(v -> config.position = v).build()
+                )
+                .addEntry(entry
+                        .startEnumSelector(Text.of("Alignment"), Alignment.class, config.alignment)
+                        .setDefaultValue(Defaults.defaultAlignment)
+                        .setSaveConsumer(v -> config.alignment = v).build()
                 );
 
         builder.setSavingRunnable(config::save);
