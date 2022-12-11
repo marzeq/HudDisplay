@@ -90,6 +90,7 @@ public class Config {
         showPing = Defaults.defaultPing;
         showPlayerName = Defaults.defaultPlayerName;
         showXYZ = Defaults.defaultXYZ;
+        showNetherXYZ = Defaults.defaultNetherXYZ;
         showBiome = Defaults.defaultBiome;
         showLightLevel = Defaults.defaultLightLevel;
         systemTime = Defaults.defaultSystemTime;
@@ -98,6 +99,8 @@ public class Config {
         pingColor = Defaults.defaultPingColor;
         playerNameColor = Defaults.defaultPlayerNameColor;
         xyzColor = Defaults.defaultXyzColor;
+        netherXyzColor = Defaults.defaultNetherXyzColor;
+        biomeColor = Defaults.defaultBiomeColor;
         lightLevelColor = Defaults.defaultLightLevelColor;
         systemTimeColor = Defaults.defaultSystemTimeColor;
         order = Defaults.defaultOrder;
