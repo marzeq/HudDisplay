@@ -39,6 +39,11 @@ public class ConfigScreen implements ModMenuApi {
                         .setSaveConsumer(v -> config.showXYZ = v).build()
                 )
                 .addEntry(entry
+                        .startBooleanToggle(Text.of("Show Biome"), config.showBiome)
+                        .setDefaultValue(Defaults.defaultBiome)
+                        .setSaveConsumer(v -> config.showBiome = v).build()
+                )
+                .addEntry(entry
                         .startBooleanToggle(Text.of("Show Player Name"), config.showPlayerName)
                         .setDefaultValue(Defaults.defaultPlayerName)
                         .setSaveConsumer(v -> config.showPlayerName = v).build()
@@ -59,6 +64,8 @@ public class ConfigScreen implements ModMenuApi {
                         .setSaveConsumer(v -> config.systemTimeFormat = v).build()
                 );
 
+        System.out.println(Defaults.defaultFpsColor);
+
         builder.getOrCreateCategory(Text.of("Colors"))
                 .addEntry(entry
                         .startColorField(Text.of("FPS Color"), config.fpsColor)
@@ -76,6 +83,12 @@ public class ConfigScreen implements ModMenuApi {
                         .startColorField(Text.of("XYZ Color"), config.xyzColor)
                         .setDefaultValue(Defaults.defaultXyzColor)
                         .setSaveConsumer(v -> config.xyzColor = v).build()
+
+                )
+                .addEntry(entry
+                        .startColorField(Text.of("Biome Color"), config.biomeColor)
+                        .setDefaultValue(Defaults.defaultBiomeColor)
+                        .setSaveConsumer(v -> config.biomeColor = v).build()
 
                 )
                 .addEntry(entry
