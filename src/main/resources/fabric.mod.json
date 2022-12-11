@@ -1,0 +1,31 @@
+
+{
+  "schemaVersion": 1,
+  "id": "huddisplay",
+  "version": "${version}",
+  "name": "Hud Display",
+  "description": "Display information about the game in the HUD",
+  "authors": [
+    "marzeq"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "icon": "assets/icon.png",
+  "entrypoints": {
+    "main": [
+      "me.marzeq.huddisplay.HudDisplay"
+    ],
+    "modmenu": [
+      "me.marzeq.huddisplay.config.ConfigScreen"
+    ]
+  },
+  "mixins": [
+    "HudDisplay.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.11",
+    "fabric-api": "*",
+    "minecraft": "~1.19.3",
+    "java": ">=17"
+  }
+}
