@@ -2,6 +2,9 @@ package me.marzeq.huddisplay.mixin;
 
 import me.marzeq.huddisplay.HudDisplay;
 import me.marzeq.huddisplay.config.Config;
+import me.marzeq.huddisplay.config.enums.Alignment;
+import me.marzeq.huddisplay.config.enums.Line;
+import me.marzeq.huddisplay.config.enums.SystemTime;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -30,7 +33,7 @@ public class HudMixin {
         ArrayList<String> lines = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
 
-        for (Config.Line line : config.order) {
+        for (Line line : config.order) {
             switch (line) {
                 case FPS -> {
                     if (config.showFps) {
@@ -71,7 +74,7 @@ public class HudMixin {
                 case SYSTEM_TIME -> {
                     if (config.systemTime) {
                         DateTimeFormatter formatter;
-                        if (config.systemTimeFormat == Config.SystemTime.TWENTY_FOUR) {
+                        if (config.systemTimeFormat == SystemTime.TWENTY_FOUR) {
                             formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                         } else {
                             formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
@@ -87,6 +90,9 @@ public class HudMixin {
 
         int x, y;
 
+        int[] widths = lines.stream().mapToInt(textRenderer::getWidth).toArray();
+        int maxWidth = max(widths);
+
         switch (config.position) {
             case TOP_LEFT -> {
                 x = 4;
@@ -98,15 +104,11 @@ public class HudMixin {
                 y = client.getWindow().getScaledHeight() - offset;
             }
             case TOP_RIGHT -> {
-                int[] widths = lines.stream().mapToInt(textRenderer::getWidth).toArray();
-                int maxWidth = max(widths);
                 int offset = maxWidth + 2;
                 x = client.getWindow().getScaledWidth() - offset;
                 y = 4;
             }
             case BOTTOM_RIGHT -> {
-                int[] widths = lines.stream().mapToInt(textRenderer::getWidth).toArray();
-                int maxWidth = max(widths);
                 int offset = maxWidth + 2;
                 x = client.getWindow().getScaledWidth() - offset;
                 int offset2 = textRenderer.fontHeight * lines.size() + (lines.size() - 1) * 2 + 2;
@@ -117,7 +119,15 @@ public class HudMixin {
 
         for (String line : lines) {
             int color = colors.get(lines.indexOf(line));
-            textRenderer.drawWithShadow(matrices, line, x, y, color);
+            if (config.alignment == Alignment.LEFT) {
+                textRenderer.drawWithShadow(matrices, line, x, y, color);
+            } else if (config.alignment == Alignment.CENTER) {
+                textRenderer.drawWithShadow(matrices, line, x + maxWidth / 2f - textRenderer.getWidth(line) / 2f, y, color);
+            } else if (config.alignment == Alignment.RIGHT) {
+                textRenderer.drawWithShadow(matrices, line, x + maxWidth - textRenderer.getWidth(line), y, color);
+            } else {
+                throw new IllegalStateException("Unexpected value: " + config.alignment);
+            }
             y += textRenderer.fontHeight + 2;
         }
     }
