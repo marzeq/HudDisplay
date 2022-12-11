@@ -5,7 +5,7 @@ import me.marzeq.huddisplay.config.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
