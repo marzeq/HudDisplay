@@ -19,6 +19,7 @@ public class Config {
     public boolean showPing = Defaults.defaultPing;
     public boolean showPlayerName = Defaults.defaultPlayerName;
     public boolean showXYZ = Defaults.defaultXYZ;
+    public boolean showNetherXYZ = Defaults.defaultNetherXYZ;
     public boolean showBiome = Defaults.defaultBiome;
     public boolean showLightLevel = Defaults.defaultLightLevel;
     public boolean systemTime = Defaults.defaultSystemTime;
@@ -29,6 +30,7 @@ public class Config {
     public int pingColor = Defaults.defaultPingColor;
     public int playerNameColor = Defaults.defaultPlayerNameColor;
     public int xyzColor = Defaults.defaultXyzColor;
+    public int netherXyzColor = Defaults.defaultNetherXyzColor;
     public int biomeColor = Defaults.defaultBiomeColor;
     public int lightLevelColor = Defaults.defaultLightLevelColor;
     public int systemTimeColor = Defaults.defaultSystemTimeColor;

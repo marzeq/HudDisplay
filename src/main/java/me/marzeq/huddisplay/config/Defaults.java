@@ -11,6 +11,7 @@ public class Defaults {
     public static boolean defaultPing = false;
     public static boolean defaultPlayerName = false;
     public static boolean defaultXYZ = false;
+    public static boolean defaultNetherXYZ = false;
     public static boolean defaultBiome = false;
     public static boolean defaultLightLevel = false;
     public static boolean defaultSystemTime = false;
@@ -21,12 +22,13 @@ public class Defaults {
     public static int defaultPingColor = 0xffffff;
     public static int defaultPlayerNameColor = 0xffffff;
     public static int defaultXyzColor = 0xffffff;
+    public static int defaultNetherXyzColor = 0xffffff;
     public static int defaultBiomeColor = 0xffffff;
     public static int defaultLightLevelColor = 0xffffff;
     public static int defaultSystemTimeColor = 0xffffff;
 
     // Order
-    public static Line[] defaultOrder = new Line[]{Line.FPS, Line.XYZ, Line.BIOME, Line.PING, Line.PLAYER_NAME, Line.LIGHT_LEVEL, Line.SYSTEM_TIME};
+    public static Line[] defaultOrder = new Line[]{Line.FPS, Line.XYZ, Line.NETHER_XYZ, Line.BIOME, Line.PING, Line.PLAYER_NAME, Line.LIGHT_LEVEL, Line.SYSTEM_TIME};
 
     // Position
     public static Position defaultPosition = Position.TOP_LEFT;
