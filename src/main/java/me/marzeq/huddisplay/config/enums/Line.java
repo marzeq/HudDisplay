@@ -8,5 +8,6 @@ public enum Line {
     PLAYER_NAME,
     LIGHT_LEVEL,
     SYSTEM_TIME,
-    BIOME
+    BIOME,
+    SERVER_ADDRESS
 }

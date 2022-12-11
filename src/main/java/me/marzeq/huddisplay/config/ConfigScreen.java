@@ -72,6 +72,11 @@ public class ConfigScreen implements ModMenuApi {
                         .startEnumSelector(Text.of("Time Format"), SystemTime.class, config.systemTimeFormat)
                         .setDefaultValue(Defaults.defaultSystemTimeFormat)
                         .setSaveConsumer(v -> config.systemTimeFormat = v).build()
+                )
+                .addEntry(entry
+                        .startBooleanToggle(Text.of("Show Server Address"), config.showServerAddress)
+                        .setDefaultValue(Defaults.defaultServerAddress)
+                        .setSaveConsumer(v -> config.showServerAddress = v).build()
                 );
 
         System.out.println(Defaults.defaultFpsColor);
@@ -122,6 +127,11 @@ public class ConfigScreen implements ModMenuApi {
                         .startColorField(Text.of("System Time Color"), config.systemTimeColor)
                         .setDefaultValue(Defaults.defaultSystemTimeColor)
                         .setSaveConsumer(v -> config.systemTimeColor = v).build()
+                )
+                .addEntry(entry
+                        .startColorField(Text.of("Server Address Color"), config.serverAddressColor)
+                        .setDefaultValue(Defaults.defaultServerAddressColor)
+                        .setSaveConsumer(v -> config.serverAddressColor = v).build()
                 );
 
         ConfigCategory category = builder.getOrCreateCategory(Text.of("Order"));

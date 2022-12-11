@@ -23,6 +23,7 @@ public class Config {
     public boolean showBiome = Defaults.defaultBiome;
     public boolean showLightLevel = Defaults.defaultLightLevel;
     public boolean systemTime = Defaults.defaultSystemTime;
+    public boolean showServerAddress = Defaults.defaultServerAddress;
     public SystemTime systemTimeFormat = Defaults.defaultSystemTimeFormat;
 
     // Colors
@@ -34,6 +35,7 @@ public class Config {
     public int biomeColor = Defaults.defaultBiomeColor;
     public int lightLevelColor = Defaults.defaultLightLevelColor;
     public int systemTimeColor = Defaults.defaultSystemTimeColor;
+    public int serverAddressColor = Defaults.defaultServerAddressColor;
 
     // Order
     public Line[] order = Defaults.defaultOrder;
