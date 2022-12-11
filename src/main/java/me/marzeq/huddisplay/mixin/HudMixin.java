@@ -66,7 +66,7 @@ public class HudMixin {
 
                         if (worldName.equals("the_nether") || worldName.equals("overworld")) {
                             String part1 = worldName.equals("the_nether") ? "Overworld XYZ: " : "Nether XYZ: ";
-                            int y = worldName.equals("the_nether") ? client.player.getBlockPos().getY() * 8 : client.player.getBlockPos().getY() / 8;
+                            int y = client.player.getBlockPos().getY();
                             int x = worldName.equals("the_nether") ? client.player.getBlockPos().getX() * 8 : client.player.getBlockPos().getX() / 8;
                             int z = worldName.equals("the_nether") ? client.player.getBlockPos().getZ() * 8 : client.player.getBlockPos().getZ() / 8;
                             lines.add(part1 + x + ", " + y + ", " + z);
