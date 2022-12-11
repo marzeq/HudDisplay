@@ -15,6 +15,7 @@ public class Config {
     public boolean showPing = Defaults.defaultPing;
     public boolean showPlayerName = Defaults.defaultPlayerName;
     public boolean showXYZ = Defaults.defaultXYZ;
+    public boolean showBiome = Defaults.defaultBiome;
     public boolean showLightLevel = Defaults.defaultLightLevel;
     public boolean systemTime = Defaults.defaultSystemTime;
     public SystemTime systemTimeFormat = Defaults.defaultSystemTimeFormat;
@@ -24,6 +25,7 @@ public class Config {
     public int pingColor = Defaults.defaultPingColor;
     public int playerNameColor = Defaults.defaultPlayerNameColor;
     public int xyzColor = Defaults.defaultXyzColor;
+    public int biomeColor = Defaults.defaultBiomeColor;
     public int lightLevelColor = Defaults.defaultLightLevelColor;
     public int systemTimeColor = Defaults.defaultSystemTimeColor;
 
@@ -58,6 +60,11 @@ public class Config {
             config.file = file;
             config.save();
         }
+
+        if (config.order.length != Defaults.defaultOrder.length) {
+            config.order = Defaults.defaultOrder;
+        }
+
         return config;
     }
 
@@ -75,6 +82,7 @@ public class Config {
         showPing = Defaults.defaultPing;
         showPlayerName = Defaults.defaultPlayerName;
         showXYZ = Defaults.defaultXYZ;
+        showBiome = Defaults.defaultBiome;
         showLightLevel = Defaults.defaultLightLevel;
         systemTime = Defaults.defaultSystemTime;
         systemTimeFormat = Defaults.defaultSystemTimeFormat;
@@ -95,7 +103,8 @@ public class Config {
         PING,
         PLAYER_NAME,
         LIGHT_LEVEL,
-        SYSTEM_TIME
+        SYSTEM_TIME,
+        BIOME
     }
 
     public enum Position {

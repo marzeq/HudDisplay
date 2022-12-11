@@ -5,6 +5,8 @@ import me.marzeq.huddisplay.config.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -52,6 +54,12 @@ public class HudMixin {
                     if (config.showXYZ) {
                         lines.add("XYZ: " + client.player.getBlockPos().getX() + ", " + client.player.getBlockPos().getY() + ", " + client.player.getBlockPos().getZ());
                         colors.add(config.xyzColor);
+                    }
+                }
+                case BIOME -> {
+                    if (config.showBiome) {
+                        lines.add("Biome: " + getBiomeString(client.player.world.getBiome(client.player.getBlockPos())));
+                        colors.add(config.biomeColor);
                     }
                 }
                 case LIGHT_LEVEL -> {
@@ -123,5 +131,12 @@ public class HudMixin {
         }
 
         return highest;
+    }
+
+    private static String getBiomeString(RegistryEntry<Biome> biome) {
+        return biome.getKeyOrValue().map(
+                (biomeKey) -> biomeKey.getValue().toString(),
+                (biome_) -> "[unregistered " + biome_ + "]"
+        );
     }
 }
