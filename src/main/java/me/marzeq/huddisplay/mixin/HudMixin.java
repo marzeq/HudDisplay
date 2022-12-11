@@ -7,6 +7,7 @@ import me.marzeq.huddisplay.config.enums.Line;
 import me.marzeq.huddisplay.config.enums.SystemTime;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
@@ -95,6 +96,18 @@ public class HudMixin {
                         }
                         lines.add("Time: " + formatter.format(java.time.LocalTime.now()).toUpperCase());
                         colors.add(config.systemTimeColor);
+                    }
+                }
+                case SERVER_ADDRESS -> {
+                    if (config.showServerAddress) {
+                        ServerInfo serverInfo = client.getCurrentServerEntry();
+                        if (serverInfo != null) {
+                            lines.add("Server: " + serverInfo.address);
+                            colors.add(config.serverAddressColor);
+                        } else {
+                            lines.add("Server: Singleplayer");
+                            colors.add(config.serverAddressColor);
+                        }
                     }
                 }
             }
