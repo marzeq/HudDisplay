@@ -59,6 +59,20 @@ public class HudMixin {
                         colors.add(config.xyzColor);
                     }
                 }
+                case NETHER_XYZ -> {
+                    if (config.showNetherXYZ) {
+                        String worldName = client.player.world.getRegistryKey().getValue().getPath();
+
+                        if (worldName.equals("the_nether") || worldName.equals("overworld")) {
+                            String part1 = worldName.equals("the_nether") ? "Overworld XYZ: " : "Nether XYZ: ";
+                            int y = worldName.equals("the_nether") ? client.player.getBlockPos().getY() / 8 : client.player.getBlockPos().getY() * 8;
+                            int x = worldName.equals("the_nether") ? client.player.getBlockPos().getX() / 8 : client.player.getBlockPos().getX() * 8;
+                            int z = worldName.equals("the_nether") ? client.player.getBlockPos().getZ() / 8 : client.player.getBlockPos().getZ() * 8;
+                            lines.add(part1 + x + ", " + y + ", " + z);
+                            colors.add(config.netherXyzColor);
+                        }
+                    }
+                }
                 case BIOME -> {
                     if (config.showBiome) {
                         lines.add("Biome: " + getBiomeString(client.player.world.getBiome(client.player.getBlockPos())));

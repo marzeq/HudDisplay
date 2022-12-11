@@ -43,6 +43,12 @@ public class ConfigScreen implements ModMenuApi {
                         .setSaveConsumer(v -> config.showXYZ = v).build()
                 )
                 .addEntry(entry
+                        .startBooleanToggle(Text.of("Show other dimension XYZ"), config.showNetherXYZ)
+                        .setTooltip(Text.of("Shows the overworld XYZ when in the nether and vice versa (doesn't display in the end)"))
+                        .setDefaultValue(Defaults.defaultNetherXYZ)
+                        .setSaveConsumer(v -> config.showNetherXYZ = v).build()
+                )
+                .addEntry(entry
                         .startBooleanToggle(Text.of("Show Biome"), config.showBiome)
                         .setDefaultValue(Defaults.defaultBiome)
                         .setSaveConsumer(v -> config.showBiome = v).build()
@@ -88,6 +94,11 @@ public class ConfigScreen implements ModMenuApi {
                         .setDefaultValue(Defaults.defaultXyzColor)
                         .setSaveConsumer(v -> config.xyzColor = v).build()
 
+                )
+                .addEntry(entry
+                        .startColorField(Text.of("Other Dimension XYZ Color"), config.netherXyzColor)
+                        .setDefaultValue(Defaults.defaultNetherXyzColor)
+                        .setSaveConsumer(v -> config.netherXyzColor = v).build()
                 )
                 .addEntry(entry
                         .startColorField(Text.of("Biome Color"), config.biomeColor)
